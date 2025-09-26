@@ -1,0 +1,23 @@
+{
+	"status": "success",
+	"body": {
+		"users": [
+			{
+				"id": "usr_0",
+				"first_name": "",
+				"last_name": null,
+				"language": "en-us",
+				"create_time": "2025-08-04T12:34:29.730Z",
+				"update_time": "2025-08-06T12:39:58.738Z",
+				"email": "",
+				"email_verified": true,
+				"auth_token": "m",
+				"email_2fa_enabled": false,
+				"otp_2fa_enabled": false,
+				"otp_verified": false,
+				"opt_out_emails": false,
+				"opt_out_texts": false
+			}
+		]
+	}
+}

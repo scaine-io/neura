@@ -1,0 +1,59 @@
+{
+	"status": "success",
+	"body": [
+		{
+			"ID": 6435,
+			"CreatedAt": "2025-09-26T06:51:18.683362Z",
+			"UpdatedAt": "2025-09-26T06:51:18.940733Z",
+			"DeletedAt": null,
+			"UserID": "f",
+			"ProjectID": "f",
+			"Shard": 31,
+			"Name": "kokoro82msxbpq1hbhso",
+			"TemplateName": "Kokoro 82M",
+			"MachineType": "g",
+			"Suffix": "1f387d2ad14d5942",
+			"Framework": "raw",
+			"ImageURL": "thetalabsofficial/kokoro:1.1",
+			"ContainerPort": 7860,
+			"ContainerArgsString": "",
+			"EnvVarsString": "",
+			"EnvVars": null,
+			"ContainerArgs": null,
+			"CPURequest": "23995m",
+			"CPULimit": "23995m",
+			"MemRequest": "32417940Ki",
+			"MemLimit": "32417940Ki",
+			"StorageRequest": "972991057538",
+			"StorageLimit": "972991057538",
+			"GPURequest": "1",
+			"GPULimit": "1",
+			"GPUModel": "NVIDIA-GeForce-RTX-5090",
+			"Replicas": 1,
+			"PodPhase": "",
+			"Annotations": {
+				"nickname": "",
+				"tags": "[\"WebUI\",\"API\",\"TextToSpeech\"]"
+			},
+			"AdditionalPorts": null,
+			"PortMappings": null,
+			"AdditionalLabels": {
+				"org": "g"
+			},
+			"AuthUsername": "username",
+			"AuthPassword": "password",
+			"VolumesString": "",
+			"Volumes": null,
+			"SelectedRegion": "",
+			"PriceHr": "10000",
+			"Cluster": "",
+			"NodeIndex": 0,
+			"BaseID": "g",
+			"Endpoint": "https://kokoro82msxbpq1hbhso-g.tec-s31.onthetaedgecloud.com",
+			"EndpointStatus": 503,
+			"NodePublicIP": "34",
+			"Region": "",
+			"GPUMemory": "32607"
+		}
+	]
+}

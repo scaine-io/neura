@@ -1,0 +1,14 @@
+{
+	"name": "kokoro82msxbpq1hbhso",
+	"project_id": "prj_",
+	"deployment_image_id": "img_zcfi3bchufypegvt03kdgiw839vt",
+	"container_image": "thetalabsofficial/kokoro:1.1",
+	"min_replicas": 1,
+	"max_replicas": 1,
+	"vm_id": "community_49c",
+	"annotations": { "tags": "[\"WebUI\",\"API\",\"TextToSpeech\"]", "nickname": "" },
+	"auth_username": "username",
+	"auth_password": "password",
+	"price_hr": "10000",
+	"shard": "31"
+}
