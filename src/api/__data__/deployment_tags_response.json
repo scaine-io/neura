@@ -1,0 +1,60 @@
+{
+	"status": "success",
+	"body": [
+		{
+			"tag": "API",
+			"count": "27",
+			"container_images": []
+		},
+		{
+			"tag": "WebUI",
+			"count": "17",
+			"container_images": []
+		},
+		{
+			"tag": "LLM",
+			"count": "10",
+			"container_images": []
+		},
+		{
+			"tag": "ImageGen",
+			"count": "9",
+			"container_images": []
+		},
+		{
+			"tag": "VideoGen",
+			"count": "3",
+			"container_images": []
+		},
+		{
+			"tag": "ImageRestore",
+			"count": "2",
+			"container_images": []
+		},
+		{
+			"tag": "3DGen",
+			"count": "1",
+			"container_images": []
+		},
+		{
+			"tag": "ImageCaption",
+			"count": "1",
+			"container_images": []
+		},
+		{
+			"tag": "ObjectDetection",
+			"count": "1",
+			"container_images": []
+		},
+		{
+			"tag": "SpeechRec",
+			"count": "1",
+			"container_images": []
+		},
+		{
+			"tag": "TextToSpeech",
+			"count": "1",
+			"container_images": []
+		}
+	]
+}

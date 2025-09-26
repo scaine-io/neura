@@ -1,0 +1,256 @@
+{
+	"status": "success",
+	"body": {
+		"vms": [
+			{
+				"id": "vm_c1",
+				"name": "C1",
+				"description": null,
+				"resources": {
+					"cpu": "2000",
+					"mem": "2048",
+					"storage": "32"
+				},
+				"price_hour": "5",
+				"rank": 1
+			},
+			{
+				"id": "vm_c2",
+				"name": "C2",
+				"description": "{\"hideFilterLevel\":0}",
+				"resources": {
+					"cpu": "8000",
+					"mem": "16384",
+					"storage": "256"
+				},
+				"price_hour": "10",
+				"rank": 2
+			},
+			{
+				"id": "vm_gt1",
+				"name": "G-T4_16GB-x1",
+				"description": null,
+				"resources": {
+					"cpu": "2000",
+					"gpu": "1",
+					"mem": "8192",
+					"storage": "128",
+					"gpu_model": "nvidia_T4",
+					"gpu model": "nvidia_T4"
+				},
+				"price_hour": "20",
+				"rank": 11
+			},
+			{
+				"id": "vm_gt2",
+				"name": "G-T4_16GB-x2",
+				"description": null,
+				"resources": {
+					"cpu": "8000",
+					"gpu": "2",
+					"mem": "16384",
+					"storage": "256",
+					"gpu_model": "nvidia_T4",
+					"gpu model": "nvidia_T4"
+				},
+				"price_hour": "40",
+				"rank": 12
+			},
+			{
+				"id": "vm_gv1",
+				"name": "G-V100_16GB-x1",
+				"description": null,
+				"resources": {
+					"cpu": "4000",
+					"gpu": "1",
+					"mem": "16384",
+					"storage": "256",
+					"gpu_model": "nvidia_V100",
+					"gpu model": "nvidia_V100"
+				},
+				"price_hour": "99",
+				"rank": 21
+			},
+			{
+				"id": "vm_gv2",
+				"name": "G-V100_16GB-x2",
+				"description": null,
+				"resources": {
+					"cpu": "8000",
+					"gpu": "2",
+					"mem": "32768",
+					"storage": "512",
+					"gpu_model": "nvidia_V100",
+					"gpu model": "nvidia_V100"
+				},
+				"price_hour": "198",
+				"rank": 22
+			},
+			{
+				"id": "vm_ga1",
+				"name": "G-A100_80GB-x1",
+				"description": null,
+				"resources": {
+					"cpu": "10000",
+					"gpu": "1",
+					"mem": "81920",
+					"storage": "512",
+					"gpu_model": "nvidia_A100_80G",
+					"gpu model": "nvidia_A100_80G"
+				},
+				"price_hour": "199",
+				"rank": 31
+			},
+			{
+				"id": "vm_ga2",
+				"name": "G-A100_80GB-x2",
+				"description": null,
+				"resources": {
+					"cpu": "20000",
+					"gpu": "2",
+					"mem": "163840",
+					"storage": "1024",
+					"gpu_model": "nvidia_A100_80G",
+					"gpu model": "nvidia_A100_80G"
+				},
+				"price_hour": "398",
+				"rank": 32
+			},
+			{
+				"id": "vm_ga4",
+				"name": "G-A100_80GB-x4",
+				"description": null,
+				"resources": {
+					"cpu": "40000",
+					"gpu": "4",
+					"mem": "327680",
+					"storage": "1024",
+					"gpu_model": "nvidia_A100_80G",
+					"gpu model": "nvidia_A100_80G"
+				},
+				"price_hour": "796",
+				"rank": 33
+			},
+			{
+				"id": "vm_ga8",
+				"name": "G-A100_80GB-x8",
+				"description": null,
+				"resources": {
+					"cpu": "80000",
+					"gpu": "8",
+					"mem": "655360",
+					"storage": "1024",
+					"gpu_model": "nvidia_A100_80G",
+					"gpu model": "nvidia_A100_80G"
+				},
+				"price_hour": "1592",
+				"rank": 35
+			},
+			{
+				"id": "vm_gh1",
+				"name": "G-H100_80GB-x1",
+				"description": null,
+				"resources": {
+					"cpu": "10000",
+					"gpu": "1",
+					"mem": "81920",
+					"storage": "512",
+					"gpu_model": "nvidia_H100_80G",
+					"gpu model": "nvidia_H100_80G"
+				},
+				"price_hour": "229",
+				"rank": 41
+			},
+			{
+				"id": "vm_gh2",
+				"name": "G-H100_80GB-x2",
+				"description": null,
+				"resources": {
+					"cpu": "20000",
+					"gpu": "2",
+					"mem": "163840",
+					"storage": "1024",
+					"gpu_model": "nvidia_H100_80G",
+					"gpu model": "nvidia_H100_80G"
+				},
+				"price_hour": "458",
+				"rank": 42
+			},
+			{
+				"id": "vm_gh4",
+				"name": "G-H100_80GB-x4",
+				"description": null,
+				"resources": {
+					"cpu": "40000",
+					"gpu": "4",
+					"mem": "327680",
+					"storage": "1024",
+					"gpu_model": "nvidia_H100_80G",
+					"gpu model": "nvidia_H100_80G"
+				},
+				"price_hour": "916",
+				"rank": 43
+			},
+			{
+				"id": "vm_ginf2_xl_x1",
+				"name": "G-INF2_xl-x1",
+				"description": "{\"hideFilterLevel\":10}",
+				"resources": {
+					"cpu": "3000",
+					"gpu": "1",
+					"mem": "14336",
+					"storage": "256",
+					"gpu_model": "neuron_inf2",
+					"gpu model": "neuron_inf2"
+				},
+				"price_hour": "76",
+				"rank": 2005
+			},
+			{
+				"id": "vm_ginf2_8xl_x1",
+				"name": "G-INF2_8xl-x1",
+				"description": "{\"hideFilterLevel\":10}",
+				"resources": {
+					"cpu": "30000",
+					"gpu": "1",
+					"mem": "129024",
+					"storage": "512",
+					"gpu_model": "neuron_inf2",
+					"gpu model": "neuron_inf2"
+				},
+				"price_hour": "197",
+				"rank": 2010
+			},
+			{
+				"id": "vm_gtrn1_2xl_x1",
+				"name": "G-TRN1_2xl-x1",
+				"description": "{\"hideFilterLevel\":10}",
+				"resources": {
+					"cpu": "6000",
+					"gpu": "1",
+					"mem": "30720",
+					"storage": "1024",
+					"gpu_model": "neuron_trn1",
+					"gpu model": "neuron_trn1"
+				},
+				"price_hour": "134",
+				"rank": 2050
+			},
+			{
+				"id": "vm_gtrn1_32xl_x16",
+				"name": "G-TRN1_32xl-x16",
+				"description": "{\"hideFilterLevel\":10}",
+				"resources": {
+					"cpu": "120000",
+					"gpu": "16",
+					"mem": "522240",
+					"storage": "1024",
+					"gpu_model": "neuron_trn1",
+					"gpu model": "neuron_trn1"
+				},
+				"price_hour": "2150",
+				"rank": 2060
+			}
+		]
+	}
+}

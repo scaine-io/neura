@@ -1,12 +1,7 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios'
 import { ResourceLoginResponse } from './interfaces/ResourceLoginResponse'
-import { EdgeCloudResponse } from './interfaces/Response'
-
-interface MachineType {
-	id: string
-	name: string
-	// Add other properties as needed
-}
+import { EdgeCloudResponse } from './interfaces/EdgeCloudResponse'
+import { ResourceListResponse } from './interfaces/ResourceListReponse'
 
 export class Resource {
 	private tecPlatformServiceClient: AxiosInstance
@@ -20,9 +15,18 @@ export class Resource {
 		})
 	}
 
-	async listMachineTypes(): Promise<MachineType[]> {
-		const response = await this.tecPlatformServiceClient.get('/resource/vm/list')
-		return response.data
+	async listVMs(): Promise<ResourceListResponse> {
+		try {
+			const response = (await this.tecPlatformServiceClient.get('/resource/vm/list')) as AxiosResponse
+			const body = response.data as EdgeCloudResponse
+			if (body.status !== 'success') {
+				throw new Error(`API responded with status: ${response.status}`)
+			}
+
+			return body.body as ResourceListResponse
+		} catch (err: any) {
+			throw new Error(`Failed to list machine types: ${err.message}`)
+		}
 	}
 
 	// https://api.thetaedgecloud.com/user/login
