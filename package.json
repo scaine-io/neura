@@ -7,6 +7,7 @@
     "build": "tsc",
     "start": "ts-node src/Start.ts",
     "stop": "ts-node src/Stop.ts",
+    "echo": "ts-node text-to-speech.ts",
     "watch": "nodemon --watch src --ext ts --exec ts-node src/index.ts"
   },
   "dependencies": {
@@ -15,6 +16,7 @@
     "dotenv": "^17.2.2"
   },
   "devDependencies": {
+    "@gradio/client": "^1.19.0",
     "nodemon": "^2.0.0",
     "ts-node": "^10.0.0",
     "typescript": "^4.0.0"
