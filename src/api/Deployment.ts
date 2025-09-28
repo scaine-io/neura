@@ -21,14 +21,14 @@ export class Deployment {
 		this.projectId = projectId.trim()
 	}
 
-	async create(data: DeploymentRequest): Promise<DeploymentListResponse[]> {
+	async create(data: DeploymentRequest): Promise<DeploymentListResponse> {
 		try {
 			const response = (await this.tecControllerClient.post('/deployment', data)) as AxiosResponse
 			const body = response.data as EdgeCloudResponse
 
 			if (body.status !== 'success') throw new Error(`API responded with status: ${response.status}`)
 
-			return body.body as DeploymentListResponse[]
+			return body.body as unknown as DeploymentListResponse
 		} catch (err: any) {
 			throw new Error(`Failed to create deployment: ${err.response?.data.message || err.message}`)
 		}
@@ -113,10 +113,10 @@ export class Deployment {
 	}
 
 	// https://controller.thetaedgecloud.com/deployment_template/standard_templates?tags=TextToSpeech&search=&page=0&number=9&category=serving&hidden=false
-	async listStandard(category: string, tags: string[]): Promise<DeploymentTemplateResponse> {
+	async listStandard(category: string): Promise<DeploymentTemplateResponse> {
 		try {
 			const response = (await this.tecControllerClient.get(
-				`/deployment_template/list_standard_templates?tags=${tags.join(',')}&category=${category}`
+				`/deployment_template/list_standard_templates?category=${category}`
 			)) as AxiosResponse
 
 			if (response.status !== 200) throw new Error(`API responded with status: ${response.status}`)
