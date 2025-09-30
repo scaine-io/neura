@@ -1,6 +1,6 @@
 # neura
 
-Theta EdgeCloud deployment API
+Theta EdgeCloud deployment API (deploy dedicated Theta models)
 
 ## Usage
 
