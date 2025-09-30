@@ -1,76 +1,67 @@
-# Multi-stage build to reduce final image size
+# Ultra-optimized build for smallest size
 FROM python:3.9-slim AS builder
 
 WORKDIR /app
 
-# Install build dependencies
+# Install minimal build dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     git \
-    ffmpeg \
     libsndfile1-dev \
     espeak-ng \
-    espeak-ng-data \
-    libssl-dev \
-    libffi-dev \
-    python3-dev \
     pkg-config \
-    cmake \
-    libopenblas-dev \
-    gfortran \
-    libblas-dev \
-    liblapack-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Create virtual environment
-RUN python -m venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
+# Upgrade pip
+RUN pip install --upgrade pip wheel
 
-# Upgrade pip and install wheel
-RUN pip install --upgrade pip setuptools wheel
-
-# Install numpy and scipy first (base dependencies)
-RUN pip install --no-cache-dir numpy scipy
-
-# Install PyTorch CPU version
-RUN pip install --no-cache-dir \
+# Install minimal CPU-only PyTorch (much smaller)
+RUN pip install --no-cache-dir --no-deps \
     torch==2.0.1+cpu \
-    torchvision==0.15.2+cpu \
-    torchaudio==2.0.2+cpu \
     --index-url https://download.pytorch.org/whl/cpu
 
-# Install audio processing libraries
+# Install only essential dependencies (no scipy, librosa for smaller size)
 RUN pip install --no-cache-dir \
-    librosa \
+    numpy \
     soundfile \
     phonemizer \
     inflect \
-    unidecode
+    unidecode \
+    requests \
+    pyyaml
 
-# Install TTS and Gradio
-RUN pip install --no-cache-dir \
-    TTS==0.13.3 \
-    gradio
+# Install minimal TTS (without heavy dependencies)
+RUN pip install --no-cache-dir --no-deps TTS==0.13.3
 
-# Runtime stage
+# Install lightweight Gradio
+RUN pip install --no-cache-dir gradio
+
+# Final ultra-minimal runtime
 FROM python:3.9-slim
 
-# Install only runtime dependencies
+# Install only essential runtime deps
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ffmpeg \
-    libsndfile1 \
     espeak-ng \
-    espeak-ng-data \
-    libopenblas0 \
+    libsndfile1 \
     && rm -rf /var/lib/apt/lists/* \
-    && apt-get clean
+    && apt-get clean \
+    && rm -rf /var/cache/apt/* \
+    && rm -rf /tmp/* \
+    && rm -rf /var/tmp/*
 
-# Copy virtual environment from builder
-COPY --from=builder /opt/venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
+# Copy only Python packages (not the whole venv)
+COPY --from=builder /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
+COPY --from=builder /usr/local/bin/gradio /usr/local/bin/
+COPY --from=builder /usr/local/bin/tts /usr/local/bin/
 
+# Minimal app
 WORKDIR /app
 COPY app.py .
+
+# Remove Python cache files
+RUN find /usr/local -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true \
+    && find /usr/local -name "*.pyc" -delete \
+    && find /usr/local -name "*.pyo" -delete
 
 EXPOSE 7860
 
