@@ -1,0 +1,17 @@
+node_modules
+*.log
+.git
+.gitignore
+README.md
+Dockerfile*
+.dockerignore
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+.pytest_cache
+.coverage
+*.egg-info/
+dist/
+build/
