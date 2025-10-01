@@ -1,63 +1,43 @@
-# Optimized build with required dependencies
-FROM python:3.9-slim AS builder
+FROM python:3.9-slim
 
 WORKDIR /app
 
-# Install build dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
     git \
-    libsndfile1-dev \
+    ffmpeg \
+    libsndfile1 \
     espeak-ng \
-    pkg-config \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
+    python3-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Upgrade pip
-RUN pip install --upgrade pip wheel
+# Upgrade pip and pin setuptools version to avoid warnings
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir "setuptools<81" wheel
 
-# Install PyTorch CPU-only (smaller than full version)
-RUN pip install --no-cache-dir \
-    torch==2.0.1+cpu \
-    --index-url https://download.pytorch.org/whl/cpu
+# Install PyTorch CPU version first
+RUN pip install --no-cache-dir torch==2.0.1+cpu torchvision==0.15.2+cpu torchaudio==2.0.2+cpu --index-url https://download.pytorch.org/whl/cpu
 
-# Install required dependencies (TTS needs scipy)
+# Install dependencies for TTS
 RUN pip install --no-cache-dir \
     numpy \
     scipy \
+    librosa \
     soundfile \
     phonemizer \
     inflect \
-    unidecode \
-    requests \
-    pyyaml \
-    librosa
+    unidecode
 
-# Install TTS and Gradio
-RUN pip install --no-cache-dir \
-    TTS==0.13.3 \
-    gradio
+# Install TTS with specific version
+RUN pip install --no-cache-dir TTS==0.13.3
 
-# Runtime stage
-FROM python:3.9-slim
+# Install compatible Gradio version
+RUN pip install --no-cache-dir gradio==3.50.2
 
-# Install runtime dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    espeak-ng \
-    libsndfile1 \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get clean
-
-# Copy Python packages from builder
-COPY --from=builder /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
-COPY --from=builder /usr/local/bin/tts /usr/local/bin/
-COPY --from=builder /usr/local/bin/gradio /usr/local/bin/
-
-WORKDIR /app
 COPY app.py .
-
-# Clean up cache files
-RUN find /usr/local -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true \
-    && find /usr/local -name "*.pyc" -delete
 
 EXPOSE 7860
 

@@ -9,8 +9,8 @@
 		"stop": "ts-node src/Stop.ts",
 		"echo": "ts-node text-to-speech.ts",
 		"watch": "nodemon --watch src --ext ts --exec ts-node src/index.ts",
-		"docker-build": "cd coqui-tts-cpu && docker build -t coqui .",
-		"docker-run": "docker run -d --name coqui -p 7860:7860 coqui",
+		"docker-build": "cd coqui-tts-cpu && docker build -t coqui .  && npm run build",
+		"docker-run": "docker ps -q -f name=coqui | grep -q . && (docker stop coqui && docker rm coqui) || (docker ps -aq -f name=coqui | grep -q . && docker rm coqui) || true; docker run -d --name coqui -p 7860:7860 coqui  && npm run coqui",
 		"coqui": "ts-node coqui-tts.ts",
 		"docker-push": "npm run docker-build && docker tag coqui scaineio/coqui:latest && docker push scaineio/coqui:latest"
 	},
